@@ -74,3 +74,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Thor Kiessling
 Tim O'Keefe
+Austin Beckelman
