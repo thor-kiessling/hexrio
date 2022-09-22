@@ -7,8 +7,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Made by Thor, James, Kevin, Legna, Tim, and Austin.
         </p>
+        <input type="text" placeholder="Enter your SSN"></input>
         <a
           className="App-link"
           href="https://reactjs.org"
