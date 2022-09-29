@@ -12,8 +12,10 @@ function App() {
         <p>
           Made by Thor, James, Kevin, Legna, Tim, and Austin.
         </p>
-        <input type="text" placeholder="Enter your SSN"></input>
-        <SSN value = "submit ssn"/>
+        <body>
+        <input type="text" placeholder="Enter your SSN" style={{ float: "left" , display : "inline"}}></input>
+        <SSN value = "submit ssn" style={{ float: "right" , display : "inline"}}/>
+      </body>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -34,10 +36,19 @@ function App() {
 }
 class SSN extends React.Component{
   render(){
-    return < button >
-      {this.props.value}
-    </button>
+    return(
+     <div style={{ display: "flex"}}>
+       < button
+         style={{ marginRight: "auto"}}
+
+         >
+         {this.props.value}
+
+      </button>
+    </div>
+    )
   }
-}
+  }
+
 
 export default App;
