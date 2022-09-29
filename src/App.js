@@ -22,7 +22,7 @@ function App() {
         >
         </a>
       </header>
-      <footer>
+      <footer className="App-footer">
         <p>Why do I have to enter my SS#?</p>
         <p>
           This service allows you to retrieve crucial information that would verify your identity.
