@@ -1,4 +1,10 @@
 .App-navigation {
+  align-items:center;
+  display: flex;
+}
+
+.nav2 {
+  width: 100%;
   text-align: right;
 }
 
@@ -42,6 +48,5 @@
 }
 
 input[type="text"] {
-  
   font-size: 25px;
 }

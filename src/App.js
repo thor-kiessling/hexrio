@@ -7,7 +7,12 @@ function App() {
 
       <div className="App-navigation">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Seal_of_the_U.S._Department_of_Homeland_Security.svg/1280px-Seal_of_the_U.S._Department_of_Homeland_Security.svg.png" alt="DHS Logo" width="100"></img>
-        Help Home About
+        
+        <div className="nav2">
+          <a href="google.com">Help </a>
+          <a href="google.com">Home </a>
+          <a href="google.com">About</a>
+        </div>
       </div>
 
       <header className="App-header">
@@ -17,15 +22,15 @@ function App() {
       </header>
 
       <body className="App-body">
-        <input type="text" placeholder="Enter your SSN" style={{ float: "left", display: "inline" }}></input>
-        <SSN value="👁" style={{}} />
-        <SSN value="🔍" style={{}} />
+        <input type="text" placeholder="Enter your SSN"></input>
+        <SSN value="👁"/>
+        <SSN value="🔍"/>
       </body>
 
       <div className="App-body-plus">
-        Please do not share your SS# with anyone other than yourself
+        🛡️ Please do not share your SS# with anyone other than yourself
         <br></br>
-        Government sanctioned for your security
+        ✓ Government sanctioned for your security
         <br></br><br></br><br></br><br></br><br></br><br></br>
       </div>
 
