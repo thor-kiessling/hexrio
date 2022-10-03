@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import React from 'react';
@@ -7,24 +6,20 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div><img src="https://www.covered6.com/wp-content/uploads/dhs-seal.png" width="500"></img></div>
-        {/*<img src={logo} className="App-logo" alt="logo" />*/}
-        <p>
-          Made by Thor, James, Kevin, Legna, Tim, and Austin.
-        </p>
-        <body>
-          <input type="text" placeholder="Enter your SSN" style={{ float: "left", display: "inline" }}></input>
-          <SSN value="submit ssn" style={{ float: "right", display: "inline" }} />
-        </body>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
+        <div><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Seal_of_the_U.S._Department_of_Homeland_Security.svg/1280px-Seal_of_the_U.S._Department_of_Homeland_Security.svg.png" alt="DHS Logo" width="300"></img></div>
+        U.S. Citizenship and <br></br>Immigration Services
       </header>
       <footer className="App-footer">
+        <br></br>
+        <body>
+    
+          <input type="text" placeholder="Enter your SSN" style={{ float: "left", display: "inline" }}></input>
+          <SSN value="🔍" style={{ float: "right", display: "inline" }} />
+          <SSN value="👁" style={{ float: "right", display: "inline" }} />
+          
+        </body>
+        
+        <br></br><br></br><br></br><br></br><br></br><br></br>
         <p>Why do I have to enter my SS#?</p>
         <p>
           This service allows you to retrieve crucial information that would verify your identity.
