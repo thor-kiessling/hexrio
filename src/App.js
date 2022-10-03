@@ -3,19 +3,19 @@ import './App.css';
 
 import React from 'react';
 
-
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <div><img src="https://www.covered6.com/wp-content/uploads/dhs-seal.png" width="500"></img></div>
+        {/*<img src={logo} className="App-logo" alt="logo" />*/}
         <p>
           Made by Thor, James, Kevin, Legna, Tim, and Austin.
         </p>
         <body>
-        <input type="text" placeholder="Enter your SSN" style={{ float: "left" , display : "inline"}}></input>
-        <SSN value = "submit ssn" style={{ float: "right" , display : "inline"}}/>
-      </body>
+          <input type="text" placeholder="Enter your SSN" style={{ float: "left", display: "inline" }}></input>
+          <SSN value="submit ssn" style={{ float: "right", display: "inline" }} />
+        </body>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -34,21 +34,20 @@ function App() {
     </div>
   );
 }
-class SSN extends React.Component{
-  render(){
-    return(
-     <div style={{ display: "flex"}}>
-       < button
-         style={{ marginRight: "auto"}}
+class SSN extends React.Component {
+  render() {
+    return (
+      <div style={{ display: "flex" }}>
+        <button
+          style={{ marginRight: "auto" }}
 
-         >
-         {this.props.value}
+        >
+          {this.props.value}
 
-      </button>
-    </div>
+        </button>
+      </div>
     )
   }
-  }
-
+}
 
 export default App;
