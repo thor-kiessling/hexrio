@@ -1,13 +1,16 @@
-.App-navigation {
+.App-navigation {  /* effectively the top header */
   align-items:center;
   display: flex;
+  background: white;
 }
 
 .nav2 {
   width: 100%;
   text-align: right;
 }
-
+html{
+  background: hsl(210, 100%, 20%);
+}
 .App-header {
   font-family: "Times new Roman";
   background-color: #ffffff;
@@ -19,7 +22,9 @@
   font-size: calc(10px + 2vmin);
   color: hsl(210, 100%, 20%);
 }
-
+.App {
+  background-color: hsl(210, 100%, 20%);
+}
 .App-body {
   display: flex;
   justify-content: center;

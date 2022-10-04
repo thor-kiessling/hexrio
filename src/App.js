@@ -7,7 +7,7 @@ function App() {
 
       <div className="App-navigation">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Seal_of_the_U.S._Department_of_Homeland_Security.svg/1280px-Seal_of_the_U.S._Department_of_Homeland_Security.svg.png" alt="DHS Logo" width="100"></img>
-        
+
         <div className="nav2">
           <a href="google.com">Help </a>
           <a href="google.com">Home </a>
@@ -18,7 +18,7 @@ function App() {
       <header className="App-header">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Seal_of_the_U.S._Department_of_Homeland_Security.svg/1280px-Seal_of_the_U.S._Department_of_Homeland_Security.svg.png" alt="DHS Logo" width="300"></img>
         <p>U.S. Citizenship and <br></br>Immigration Services</p>
-        
+
       </header>
 
       <body className="App-body">
@@ -31,11 +31,11 @@ function App() {
         🛡️ Please do not share your SS# with anyone other than yourself
         <br></br>
         ✓ Government sanctioned for your security
-        <br></br><br></br><br></br><br></br><br></br><br></br>
+
       </div>
 
       <footer className="App-footer">
-        <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
         <p>
           Why do I have to enter my SS#?
           <br></br><br></br>
@@ -43,7 +43,6 @@ function App() {
           This works in collaboration with databases from the DMV, Social Security Department, and Department of State.
         </p>
       </footer>
-
 
     </div>
   );
