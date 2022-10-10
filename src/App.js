@@ -6,19 +6,17 @@ function App() {
     <div className="App">
 
       <div className="App-navigation">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Seal_of_the_U.S._Department_of_Homeland_Security.svg/1280px-Seal_of_the_U.S._Department_of_Homeland_Security.svg.png" alt="DHS Logo" width="100"></img>
+        <img src="https://www.uscis.gov/sites/default/files/images/site/DHS_cis_W.svg" alt="DHS Logo" width="400"></img>
 
         <div className="nav2">
-          <a href="google.com">Help </a>
-          <a href="google.com">Home </a>
-          <a href="google.com">About</a>
+          <a href="google.com">🔍 Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="google.com">🏠 Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="google.com">ℹ️ About</a>
         </div>
       </div>
 
       <header className="App-header">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Seal_of_the_U.S._Department_of_Homeland_Security.svg/1280px-Seal_of_the_U.S._Department_of_Homeland_Security.svg.png" alt="DHS Logo" width="300"></img>
-        <p>U.S. Citizenship and <br></br>Immigration Services</p>
-
+        <img src="https://www.uscis.gov/sites/default/files/images/article-history/SealsSignatures_USCIS%402x.png" alt="DHS Logo" width="500"></img>
       </header>
 
       <body className="App-body">
