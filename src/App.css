@@ -2,6 +2,8 @@
   align-items:center;
   display: flex;
   background: white;
+  padding-top: 15px;
+  padding-left: 15px;
 }
 
 .nav2 {
