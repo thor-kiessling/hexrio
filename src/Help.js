@@ -18,6 +18,10 @@ const Help = () => {
                             <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" width="17" height="17"></img> Home </a>
                         <a href='/About' class="button">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/1200px-Magnifying_glass_icon.svg.png" width="15" height="15"></img>About</a>
+                        <a href='/DataEntry' className="button">
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/1200px-Magnifying_glass_icon.svg.png"
+                                width="15" height="15"></img>Data Entry</a>
 
                     </div>
                 </div>

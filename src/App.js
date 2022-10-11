@@ -22,6 +22,10 @@ function App() {
                             <img
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/1200px-Magnifying_glass_icon.svg.png"
                                 width="15" height="15"></img>About</a>
+                        <a href='/DataEntry' className="button">
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/1200px-Magnifying_glass_icon.svg.png"
+                                width="15" height="15"></img>Data Entry</a>
 
                     </div>
                 </div>
