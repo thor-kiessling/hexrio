@@ -8,7 +8,7 @@ function App() {
             <div className="App">
 
                 <div className="App-navigation">
-                    <img src="https://www.uscis.gov/sites/default/files/images/site/DHS_cis_W.svg" alt="DHS Logo" width="400"></img>
+                    <a href="./"><img src="https://www.uscis.gov/sites/default/files/images/site/DHS_cis_W.svg" alt="DHS Logo" width="400"></img></a>
 
 
                     <div className="nav2">
