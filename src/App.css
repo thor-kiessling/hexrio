@@ -1,4 +1,4 @@
-.App-navigation {  /* effectively the top header */
+[class*="-navigation"] {  /* effectively the top header */
   align-items:center;
   display: flex;
   background: white;
@@ -13,38 +13,8 @@
 html{
   background: hsl(210, 100%, 20%);
 }
-.Help-header {
-  font-family: "SansSerif";
-  background-color: #ffffff;
-  min-height: 30vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(30px + 2vmin);
-  color: hsl(210, 100%, 20%);
-}
 
-.Help-body {
-  display: flex;
-  justify-content: left;
-  min-height: 70vh;
-  background-color: hsl(210, 100%, 20%);
-  color: white;
-  font-size: 35px;
-}
-.Help-footer {
-  text-align: left;
-  display: flex;
-  font-family: "Times new Roman";
-  font-size:20px;
-  position: fixed;
-  width: 100%;
-  flex-direction: column;
-  color: white;
-  background-color: hsl(210, 100%, 20%);
-}
-.App-header {
+[class*="-header"] {
   font-family: "Times new Roman";
   background-color: #ffffff;
   min-height: 50vh;
@@ -58,13 +28,19 @@ html{
 .App {
   background-color: hsl(210, 100%, 20%);
 }
-.App-body {
+[class*="-body"] {
   display: flex;
   justify-content: center;
   background-color: hsl(210, 100%, 20%);
 }
+.Help-body {  /*For specifics on help beyond the all -body */
+  justify-content: left;
+  min-height: 70vh;
+  color: white;
+  font-size: 35px;
+}
 
-.App-body-plus {
+[class*="-body-plus"] {
   font-family: "Times new Roman";
   text-align: center;
   background-color: hsl(210, 100%, 20%);
@@ -72,7 +48,7 @@ html{
   font-size: 25px;
 }
 
-.App-footer {
+[class*="-footer"] {
   text-align: left;
   display: flex;
   font-family: "Times new Roman";
