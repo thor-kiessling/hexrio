@@ -61,6 +61,10 @@ html{
   background-color: hsl(210, 100%, 20%);
 }
 
-input[type="text"] {
+input[type= 'text'] {
+  font-size: 25px;
+}
+
+input[type= 'password'] {
   font-size: 25px;
 }

@@ -10,7 +10,6 @@ function App() {
     .then(response => response.json())
     .then(json => console.log(json))
     }
-  
 
         return (
 
@@ -45,8 +44,7 @@ function App() {
                 </header>
 
                 <body className="App-body">
-                <input type="text" placeholder="Enter your SSN"></input>
-                <SSN value="👁"/>
+                <SSN/>
                 {/*<SSN value="🔍"/>*/}
                 <button onClick={handleClick}>🔍</button>
                 </body>
@@ -76,22 +74,35 @@ function App() {
         );
     }
 
+    // modified SSN component to hide input and show it with the eye button
     class SSN extends React.Component {
+        constructor(props) {
+
+            super(props);
+
+            this.state = {
+                hidden: true,
+            };
+
+            this.toggleHide = this.toggleHide.bind(this);
+        }
+
+        toggleHide() {
+            this.setState({ hidden: !this.state.hidden });
+        }
+
         render() {
             return (
                 <div style={{display: "flex"}}>
+                    <input type={this.state.hidden ? 'password' : 'text'} placeholder="Enter your SSN" />
                     <button
                         style={{marginRight: "auto"}}
-
-                    >
-                        {this.props.value}
-
+                        onClick={this.toggleHide}>👁
                     </button>
                 </div>
-            )
+            );
         }
     }
-
 
 export default App;
 
