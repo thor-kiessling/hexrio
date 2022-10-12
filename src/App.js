@@ -2,6 +2,16 @@ import './App.css';
 import React from 'react';
 
 function App() {
+  
+  // This function is called when the search function is clicked
+  function handleClick() {
+    //console.log("Hello, world!");
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    .then(response => response.json())
+    .then(json => console.log(json))
+    }
+  
+
         return (
 
 
@@ -37,7 +47,8 @@ function App() {
                 <body className="App-body">
                 <input type="text" placeholder="Enter your SSN"></input>
                 <SSN value="👁"/>
-                <SSN value="🔍"/>
+                {/*<SSN value="🔍"/>*/}
+                <button onClick={handleClick}>🔍</button>
                 </body>
 
                 <div className="App-body-plus">
