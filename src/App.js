@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import Nav2 from './Nav2.js';
+import { createVendiaClient } from '@vendia/client';
 
 // DMV Node apiUrl/websocketUrl/apiKey
 const client = createVendiaClient({

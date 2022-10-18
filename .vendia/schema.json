@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://vendia.net/schemas/demos/track-and-trace.json",
+  "title": "Citizen verification",
+  "description": "Define the identity of a citizen using their personal information",
+  "type": "object",
+  "properties": {
+    "Citizen": {
+      "description": "Each citizen's personal information",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "description": "Citizen's first name",
+            "type": "string"
+          },
+          "lastName": {
+            "description": "Citizen's last name",
+            "type": "string"
+          },
+          "dl": {
+            "description": "Driver's License Number",
+            "type": "integer"
+          },
+          "dob": {
+            "description": "Date of Birth; in the format: mon/day/yr",
+            "type": "string"
+          },
+          "passportNum": {
+            "description": "Citizen's passport number",
+            "type": "integer"
+          },
+          "passportExp": {
+            "description": "Passport expiration date; in the format: mon/day/yr",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
