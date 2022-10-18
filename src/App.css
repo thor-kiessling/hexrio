@@ -7,8 +7,8 @@
 }
 
 .nav2 {
-  width: 75%;
-  text-align: right;
+  width: 70%;
+  text-align: left;
 }
 html{
   background: hsl(210, 100%, 20%);
@@ -42,7 +42,7 @@ html{
 
 [class*="-body-plus"] {
   font-family: "Times new Roman";
-  text-align: center;
+  text-align: left;
   background-color: hsl(210, 100%, 20%);
   color: white;
   font-size: 25px;
