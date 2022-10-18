@@ -2,6 +2,15 @@ import './App.css';
 import React from 'react';
 import Nav2 from './Nav2.js';
 
+// DMV Node apiUrl/websocketUrl/apiKey
+const client = createVendiaClient({
+    apiUrl: `https://9d1xmdp3qi.execute-api.us-west-1.amazonaws.com/graphql/`,
+    websocketUrl: `wss://hf9yone16h.execute-api.us-west-1.amazonaws.com/graphql`,
+    apiKey: 'FGKpSz5kkXeyAyPDGvBDbni4buusHUsq6K2u2axykcUn', // <---- API key
+});
+
+const { entities } = client;
+
 function App() {
   
   // This function is called when the search function is clicked
