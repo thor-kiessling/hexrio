@@ -13,7 +13,7 @@ const client = createVendiaClient({
 const { entities } = client;
 
 function App() {
-  
+
   // This function is called when the search function is clicked
   function handleClick() {
     //console.log("Hello, world!");
@@ -54,9 +54,9 @@ function App() {
                 <footer className="App-footer">
 
                     <p>
-                        Why do I have to enter my SS#?
+                        Why do I have to enter an SSN?
                         <br></br><br></br>
-                        This service allows you to retrieve crucial information that would verify your identity.
+                        This service allows you to retrieve crucial information that would verify the citizen's identity.
                         This works in collaboration with databases from the DMV, Social Security Department, and
                         Department of State.
                     </p>
@@ -89,7 +89,7 @@ function App() {
         render() {
             return (
                 <div style={{display: "flex"}}>
-                    <input type={this.state.hidden ? 'password' : 'text'} placeholder="Enter your SSN" />
+                    <input type={this.state.hidden ? 'password' : 'text'} placeholder="Enter citizen's SSN" />
                     <button
                         style={{marginRight: "auto"}}
                         onClick={this.toggleHide}>👁

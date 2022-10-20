@@ -34,6 +34,10 @@
           "passportExp": {
             "description": "Passport expiration date; in the format: mon/day/yr",
             "type": "string"
+          },
+          "socialSecurityNum": {
+            "description": "Citizen's Social Security number",
+            "type": "integer"
           }
         }
       }
