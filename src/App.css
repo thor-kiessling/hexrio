@@ -20,7 +20,7 @@ html{
 [class*="-header"] {
   font-family: "Times new Roman";
   background-color: #ffffff;
-  height: 40vh;
+  height: 35vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +34,7 @@ html{
 [class*="-body"] {
   display: flex;
   justify-content: center;
+  height: 15vh;
   background-color: hsl(210, 100%, 20%);
 }
 .Help-body {  /*For specifics on help beyond the all -body */
@@ -44,18 +45,22 @@ html{
 }
 
 [class*="-body-plus"] {
-  font-family: "Times new Roman";
+  font-family: "Merriweather";
+  height: 10vh;
+  padding-right: 55px;
+  padding-top: 10px;
   text-align: left;
   background-color: hsl(210, 100%, 20%);
   color: white;
-  font-size: 25px;
+  font-size: 17px;
 }
 
 [class*="-footer"] {
   text-align: left;
   display: flex;
-  font-family: "Times new Roman";
+  font-family: "Merriweather";
   font-size:20px;
+  padding-top: 20px;
   position: relative;
   width: 100%;
   bottom: 0;
