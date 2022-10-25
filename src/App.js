@@ -31,9 +31,9 @@ function App() {
                     <img src="https://www.uscis.gov/sites/default/files/images/article-history/SealsSignatures_USCIS%402x.png" alt="DHS Logo" width="350"></img>
                 </header>
 
-                <body className="App-body">
+                <div className="App-body">
                     <SearchBar />
-                </body>
+                </div>
 
                 <div className="App-body-plus">
                         <AppBodyPlus />

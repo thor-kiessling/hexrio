@@ -10,6 +10,7 @@ export default function AppBodyPlus() {
     return (
 
         <Typography
+        component={'span'}
         variant='body1'
         style={{fontSize: 17, fontFamily: 'Merriweather'}}
         align='left'>
