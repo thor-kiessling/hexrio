@@ -18,6 +18,10 @@ function DataEntry() {
         const addResponse = await entities.citizen.add({
             firstName: "hank",
             lastName: "hill",
+            dl: 1234567,
+            dob: "12/1/1965",
+            passportNum: 2345678,
+            passportExp: "12/1/2024",
             socialSecurityNum: 675250578,
         });
         console.log(addResponse);
