@@ -49,10 +49,10 @@ function DataEntry() {
                 <img src="https://www.uscis.gov/sites/default/files/images/article-history/SealsSignatures_USCIS%402x.png" alt="DHS Logo" width="500"></img>
             </header>
 
-            <body className="DataEntry-body">
+            <div className="DataEntry-body">
                 <SSN/>
                 <button onClick={handleSubmit}>Submit</button>
-            </body>
+            </div>
 
             <div className="DataEntry-body-plus">
                 Enter new DMV, Social Security,and State Department information here
