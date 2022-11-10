@@ -30,7 +30,7 @@ export default function EntryBar() {
             dob: "12/1/1965",
             passportNum: 2345678,
             passportExp: "12/1/2024",
-            socialSecurityNum: {prop},
+            socialSecurityNum: Number(prop),
         });
         console.log(addResponse);
     }
