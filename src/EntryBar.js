@@ -33,6 +33,7 @@ export default function EntryBar() {
             socialSecurityNum: Number(prop),
         });
         console.log(addResponse);
+        alert(JSON.stringify(addResponse['result']));
     }
 
     const handleSubmit = (event) => {
