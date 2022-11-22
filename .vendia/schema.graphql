@@ -203,18 +203,21 @@ input Self_Citizen_ConditionInput_ {
   lastName: Vendia_ModelStringInput_
   passportExp: Vendia_ModelStringInput_
   passportNum: Vendia_ModelIntInput_
+  socialSecurityNum: Vendia_ModelIntInput_
   _and: [Self_Citizen_ConditionInput_]
   _or: [Self_Citizen_ConditionInput_]
   _not: Self_Citizen_ConditionInput_
 }
 
 input Self_Citizen_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   dl: Vendia_ModelIntInput_
   dob: Vendia_ModelStringInput_
   firstName: Vendia_ModelStringInput_
   lastName: Vendia_ModelStringInput_
   passportExp: Vendia_ModelStringInput_
   passportNum: Vendia_ModelIntInput_
+  socialSecurityNum: Vendia_ModelIntInput_
   _and: [Self_Citizen_FilterInput_]
   _or: [Self_Citizen_FilterInput_]
   _not: Self_Citizen_FilterInput_
@@ -232,6 +235,7 @@ type Self_Citizen {
   lastName: String
   passportExp: String
   passportNum: Int
+  socialSecurityNum: Int
   _owner: String
 }
 
@@ -243,6 +247,7 @@ type Self_Citizen_Partial_ {
   lastName: String
   passportExp: String
   passportNum: Int
+  socialSecurityNum: Int
   _owner: String
 }
 
@@ -274,6 +279,7 @@ input Self_Citizen_Input_ {
   lastName: String
   passportExp: String
   passportNum: Int
+  socialSecurityNum: Int
 }
 
 input Self_Citizen_UpdateInput_ {
@@ -283,6 +289,7 @@ input Self_Citizen_UpdateInput_ {
   lastName: String
   passportExp: String
   passportNum: Int
+  socialSecurityNum: Int
 }
 
 input Self_Citizen_PartialInput_ {
@@ -292,6 +299,7 @@ input Self_Citizen_PartialInput_ {
   lastName: String
   passportExp: String
   passportNum: Int
+  socialSecurityNum: Int
 }
 
 input Vendia_Block_transactions_transactionsItem_ConditionInput_ {
@@ -1623,6 +1631,7 @@ input Vendia_Subscription_ConditionInput_ {
 }
 
 input Vendia_Subscription_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   operation: Vendia_ModelStringInput_
   connectionId: Vendia_ModelStringInput_
   _and: [Vendia_Subscription_FilterInput_]
@@ -1701,6 +1710,7 @@ input Vendia_Block_ConditionInput_ {
 }
 
 input Vendia_Block_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   blockSchemaVersion: Vendia_ModelStringInput_
   blockId: Vendia_ModelStringInput_
   redactedBlockHash: Vendia_ModelStringInput_
@@ -1832,6 +1842,7 @@ input Vendia_File_ConditionInput_ {
 }
 
 input Vendia_File_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   sourceBucket: Vendia_ModelStringInput_
   sourceKey: Vendia_ModelStringInput_
   sourceRegion: Vendia_ModelStringInput_
@@ -1973,6 +1984,7 @@ input Vendia_Folder_ConditionInput_ {
 }
 
 input Vendia_Folder_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   name: Vendia_ModelStringInput_
   parent: Vendia_ModelStringInput_
   read: Vendia_ModelStringInput_
@@ -2071,6 +2083,7 @@ input Vendia_Contract_ConditionInput_ {
 }
 
 input Vendia_Contract_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   name: Vendia_ModelStringInput_
   description: Vendia_ModelStringInput_
   revisionId: Vendia_ModelStringInput_
@@ -2166,6 +2179,7 @@ input Vendia_ApiKey_ConditionInput_ {
 }
 
 input Vendia_ApiKey_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   name: Vendia_ModelStringInput_
   status: Vendia_ModelStringInput_
   expiry: Vendia_ModelStringInput_
@@ -2248,6 +2262,7 @@ input Vendia_JwtAuthentication_ConditionInput_ {
 }
 
 input Vendia_JwtAuthentication_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   name: Vendia_ModelStringInput_
   jwksUrl: Vendia_ModelStringInput_
   issuer: Vendia_ModelStringInput_
@@ -2553,6 +2568,7 @@ input Vendia_DeploymentInfo_ConditionInput_ {
 }
 
 input Vendia_DeploymentInfo_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   deploymentTime: Vendia_ModelStringInput_
   consensusDefinitionHash: Vendia_ModelStringInput_
   versionTag: Vendia_ModelStringInput_
@@ -2656,48 +2672,27 @@ type Query {
 }
 
 type Mutation {
-  add_Citizen_async(input: Self_Citizen_Input_!): Vendia_Transaction_Result_
   add_Citizen(input: Self_Citizen_Input_!, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_Citizen_Transaction_Result_
-  put_Citizen_async(id: ID!, input: Self_Citizen_Input_!, condition: Self_Citizen_ConditionInput_): Vendia_Transaction_Result_
   put_Citizen(id: ID!, input: Self_Citizen_Input_!, condition: Self_Citizen_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_Citizen_Transaction_Result_
-  update_Citizen_async(id: ID!, input: Self_Citizen_UpdateInput_!, condition: Self_Citizen_ConditionInput_): Vendia_Transaction_Result_
   update_Citizen(id: ID!, input: Self_Citizen_UpdateInput_!, condition: Self_Citizen_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_Citizen_Transaction_Result_
-  remove_Citizen_async(id: ID!, condition: Self_Citizen_ConditionInput_): Vendia_Transaction_Result_
   remove_Citizen(id: ID!, condition: Self_Citizen_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_Citizen_Delete_Transaction_Result_
-  addVendia_File_async(input: Vendia_File_Input_!): Vendia_Transaction_Result_
   addVendia_File(input: Vendia_File_Input_!, syncMode: Vendia_SyncMode!): Vendia_File_Transaction_Result_
-  putVendia_File_async(id: ID!, input: Vendia_File_Input_!, condition: Vendia_File_ConditionInput_): Vendia_Transaction_Result_
   putVendia_File(id: ID!, input: Vendia_File_Input_!, condition: Vendia_File_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_File_Transaction_Result_
-  updateVendia_File_async(id: ID!, input: Vendia_File_UpdateInput_!, condition: Vendia_File_ConditionInput_): Vendia_Transaction_Result_
   updateVendia_File(id: ID!, input: Vendia_File_UpdateInput_!, condition: Vendia_File_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_File_Transaction_Result_
-  removeVendia_File_async(id: ID!, condition: Vendia_File_ConditionInput_): Vendia_Transaction_Result_
   removeVendia_File(id: ID!, condition: Vendia_File_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_File_Delete_Transaction_Result_
-  addVendia_Folder_async(input: Vendia_Folder_Input_!): Vendia_Transaction_Result_
   addVendia_Folder(input: Vendia_Folder_Input_!, syncMode: Vendia_SyncMode!): Vendia_Folder_Transaction_Result_
-  removeVendia_Folder_async(id: ID!, condition: Vendia_Folder_ConditionInput_): Vendia_Transaction_Result_
   removeVendia_Folder(id: ID!, condition: Vendia_Folder_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_Folder_Delete_Transaction_Result_
-  addVendia_Contract_async(input: Vendia_Contract_Input_!, aclInput: Vendia_Acls_Input_): Vendia_Transaction_Result_
   addVendia_Contract(input: Vendia_Contract_Input_!, aclInput: Vendia_Acls_Input_, syncMode: Vendia_SyncMode!): Vendia_Contract_Transaction_Result_
-  updateVendia_Contract_async(id: ID!, input: Vendia_Contract_UpdateInput_!, condition: Vendia_Contract_ConditionInput_, aclInput: Vendia_Acls_Input_): Vendia_Transaction_Result_
   updateVendia_Contract(id: ID!, input: Vendia_Contract_UpdateInput_!, condition: Vendia_Contract_ConditionInput_, aclInput: Vendia_Acls_Input_, syncMode: Vendia_SyncMode!): Vendia_Contract_Transaction_Result_
-  removeVendia_Contract_async(id: ID!, condition: Vendia_Contract_ConditionInput_): Vendia_Transaction_Result_
   removeVendia_Contract(id: ID!, condition: Vendia_Contract_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_Contract_Delete_Transaction_Result_
-  addVendia_ApiKey_async(input: Vendia_ApiKey_Input_!): Vendia_Transaction_Result_
   addVendia_ApiKey(input: Vendia_ApiKey_Input_!, syncMode: Vendia_SyncMode!): Vendia_ApiKey_Transaction_Result_
-  updateVendia_ApiKey_async(id: ID!, input: Vendia_ApiKey_UpdateInput_!, condition: Vendia_ApiKey_ConditionInput_): Vendia_Transaction_Result_
   updateVendia_ApiKey(id: ID!, input: Vendia_ApiKey_UpdateInput_!, condition: Vendia_ApiKey_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_ApiKey_Transaction_Result_
-  removeVendia_ApiKey_async(id: ID!, condition: Vendia_ApiKey_ConditionInput_): Vendia_Transaction_Result_
   removeVendia_ApiKey(id: ID!, condition: Vendia_ApiKey_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_ApiKey_Delete_Transaction_Result_
-  addVendia_JwtAuthentication_async(input: Vendia_JwtAuthentication_Input_!): Vendia_Transaction_Result_
   addVendia_JwtAuthentication(input: Vendia_JwtAuthentication_Input_!, syncMode: Vendia_SyncMode!): Vendia_JwtAuthentication_Transaction_Result_
-  updateVendia_JwtAuthentication_async(id: ID!, input: Vendia_JwtAuthentication_UpdateInput_!, condition: Vendia_JwtAuthentication_ConditionInput_): Vendia_Transaction_Result_
   updateVendia_JwtAuthentication(id: ID!, input: Vendia_JwtAuthentication_UpdateInput_!, condition: Vendia_JwtAuthentication_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_JwtAuthentication_Transaction_Result_
-  removeVendia_JwtAuthentication_async(id: ID!, condition: Vendia_JwtAuthentication_ConditionInput_): Vendia_Transaction_Result_
   removeVendia_JwtAuthentication(id: ID!, condition: Vendia_JwtAuthentication_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_JwtAuthentication_Delete_Transaction_Result_
-  updateVendia_Settings_async(input: Vendia_Settings_UpdateInput_!, condition: Vendia_Settings_ConditionInput_): Vendia_Transaction_Result_
   updateVendia_Settings(input: Vendia_Settings_UpdateInput_!, condition: Vendia_Settings_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_Settings_Transaction_Result_
   invokeVendia_Contract(id: ID!, revisionId: String, input: Vendia_Contract_InvokeInput_, syncMode: Vendia_SyncMode!): Vendia_Contract_Transaction_Result_
-  invokeVendia_Contract_async(id: ID!, revisionId: String, input: Vendia_Contract_InvokeInput_): Vendia_Transaction_Result_
 }
 
 type Subscription {
