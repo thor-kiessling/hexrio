@@ -59,10 +59,11 @@ const responseAsync = async () => {
         event.preventDefault();
       };
 
-      const handleClick = () => {
-        console.log('SSN: ', parseInt(values.password, 10));
-        console.log(responseAsync());
-        };
+      const handleClick = async () => {
+          console.log('SSN: ', parseInt(values.password, 10));
+          const result = await responseAsync();
+          console.log(result.items[0]);
+      };
 
     return (
         <Box 
