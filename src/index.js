@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Help from "./Help";
 import DataEntry from "./DataEntry";
 import About from "./About";
+import DataDisplay from "./DataDisplay"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +20,7 @@ root.render(
               <Route path="/Help" element={<Help/>} />
               <Route path="/About" element={<About/>} />
               <Route path="/DataEntry" element={<DataEntry/>} />
+              <Route path='/DataDisplay' element={<DataDisplay/>} />
 
 
           </Routes>

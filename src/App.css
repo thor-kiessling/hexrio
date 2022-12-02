@@ -28,6 +28,11 @@ html{
   font-size: calc(10px + 2vmin);
   color: hsl(210, 100%, 20%);
 }
+
+.datadisplay {
+  background-color: #ffffff;
+  height: 35vh;
+}
 .App {
   background-color: hsl(210, 100%, 20%);
 }
@@ -36,6 +41,13 @@ html{
   justify-content: center;
   height: 15vh;
   background-color: hsl(210, 100%, 20%);
+
+}
+
+[class*="-white-body"] {
+  background-color: #ffffff;
+  height: 25vh;
+  width: 100%;
 }
 .Help-body {  /*For specifics on help beyond the all -body */
   justify-content: left;

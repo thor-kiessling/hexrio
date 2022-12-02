@@ -8,39 +8,23 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import SearchIcon from '@mui/icons-material/Search';
-import { createVendiaClient } from '@vendia/client';
-
-// DMV Node apiUrl/websocketUrl/apiKey
-const client = createVendiaClient({
-    apiUrl: `https://rhpsthbngc.execute-api.us-west-1.amazonaws.com/graphql/`,
-    websocketUrl: `wss://phqj0olq59.execute-api.us-west-1.amazonaws.com/graphql`,
-    apiKey: 'BH7U5toxb4qPcdDa1yNd2ab1riZ9xkfP3cGtU5VAz79c', // <---- API key
-});
-
-const { entities } = client;
+import {useNavigate} from 'react-router-dom';
 
 export default function SearchBar() {
 
-const responseAsync = async () => {
-    //return await entities.citizen.get('01847d0d-7e60-ca08-8746-6cec70768a68');
-    return await entities.citizen.list(
-        {
-            filter: {
-                socialSecurityNum:  {
-                    eq: parseInt(values.password, 10),
-                },
+// used in cooperation with toDataDisplay
+const navigate = useNavigate();
 
-            },
-        }
-    );
-}
+// Sends the SSN to DataDisplay
+const toDataDisplay=()=>{
+    navigate('/DataDisplay',{state:{ssn:values.password}});
+      }
+
 
     const [values, setValues] = React.useState({    // values.password = SSN, setValues = setSSN 
         password: '',
         showPassword: false,
       });
-
-    //const [ssn, setSSN] = React.useState(parseInt(values.password, 10));
 
       const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -59,11 +43,6 @@ const responseAsync = async () => {
         event.preventDefault();
       };
 
-      const handleClick = async () => {
-          console.log('SSN: ', parseInt(values.password, 10));
-          const result = await responseAsync();
-          console.log(result.items[0]);
-      };
 
     return (
         <Box 
@@ -94,15 +73,14 @@ const responseAsync = async () => {
                             >
                             {values.showPassword ? <VisibilityOff /> : <Visibility />}
                             </IconButton>
-                            
+                            <a onClick={()=>{toDataDisplay()}}>
                             <IconButton
                             size='large'
-                            onClick={handleClick}
                             onMouseDown={handleMouseDownPassword}
                             edge="end">
                             <SearchIcon/>
                             </IconButton>
-
+                            </a>
                         </InputAdornment>
                     }
                     label="Password"
