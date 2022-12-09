@@ -17,6 +17,11 @@ const navigate = useNavigate();
 
 // Sends the SSN to DataDisplay
 const toDataDisplay=()=>{
+    if (values.password.length === 0)
+    {
+      window.location.reload(false);
+    }
+    else
     navigate('/DataDisplay',{state:{ssn:values.password}});
       }
 
