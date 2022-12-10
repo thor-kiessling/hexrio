@@ -9,6 +9,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Match from './Match.js'
 import Invalid from './Invalid.js'
+import {CircularProgress} from "@mui/material";
 
 
 
@@ -115,17 +116,18 @@ const DataDisplay = () => {
 
 
     const CheckResults=()=>{
-      if (tableDataDMV.items[0].dob === tableDataDOS.items[0].dob &&
+        try{
+      if (tableDataDMV.items[0].dob === tableDataDOS.items[0].dob && //DMV to DOS comparison
           tableDataDMV.items[0].firstName === tableDataDOS.items[0].firstName &&
           tableDataDMV.items[0].lastName === tableDataDOS.items[0].lastName &&
           tableDataDMV.items[0].passportExp === tableDataDOS.items[0].passportExp &&
           tableDataDMV.items[0].passportNum === tableDataDOS.items[0].passportNum &&
-          tableDataDMV.items[0].dob === tableDataSS.items[0].dob &&
+          tableDataDMV.items[0].dob === tableDataSS.items[0].dob && //DMV to SS comparison
           tableDataDMV.items[0].firstName === tableDataSS.items[0].firstName &&
           tableDataDMV.items[0].lastName === tableDataSS.items[0].lastName &&
           tableDataDMV.items[0].passportExp === tableDataSS.items[0].passportExp &&
           tableDataDMV.items[0].passportNum === tableDataSS.items[0].passportNum &&
-          tableDataDOS.items[0].dob === tableDataSS.items[0].dob &&
+          tableDataDOS.items[0].dob === tableDataSS.items[0].dob && //DOS to SS comparison
           tableDataDOS.items[0].firstName === tableDataSS.items[0].firstName &&
           tableDataDOS.items[0].lastName === tableDataSS.items[0].lastName &&
           tableDataDOS.items[0].passportExp === tableDataSS.items[0].passportExp &&
@@ -139,7 +141,10 @@ const DataDisplay = () => {
             return (
               <Invalid/>
             )
-          }
+          }}
+        catch(TypeError){
+            return <Invalid/>
+        }
     }
 
     console.log(tableDataDMV.items);
@@ -166,7 +171,7 @@ const DataDisplay = () => {
                           align='center'
                           sx={{ fontWeight: 'bold', paddingTop: 3, paddingBottom: 3 }}
                           >
-                            {ssn}
+                            Entrant's SSN: {ssn}
                             </Typography>
                             </Stack>
         </header>
@@ -219,7 +224,7 @@ const DataDisplay = () => {
               getRowId={(row) => row._id}
               style={{ background: 'white', fontFamily: 'Merriweather', fontSize: 13, width: '90%' }}
               align='center'
-              sx={{ paddingLeft: 1, borderColor: 'white', paddingLeft: 17 }}     
+              sx={{ paddingLeft: 1, borderColor: 'white'}}
             />
             
           </div>
@@ -251,6 +256,16 @@ const DataDisplay = () => {
         
 
     );
+     } else {
+         return(
+             <box alignItems="center" justifyContent='center'
+                    style={{width: '100vw', height: '100vh', color: 'white', display: 'flex', justifyContent: 'center',
+                        alignItems: 'center'} }>
+
+                 <CircularProgress style={{width: '100px', height: '100px', display: 'flex'}}/>
+
+             </box>
+         )
      }
 };
 
