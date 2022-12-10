@@ -8,21 +8,23 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import SearchIcon from '@mui/icons-material/Search';
-import { createVendiaClient } from '@vendia/client';
+// import { createVendiaClient } from '@vendia/client';
+//
+// // DMV Node apiUrl/websocketUrl/apiKey
+// const client = createVendiaClient({
+//     apiUrl: `https://rhpsthbngc.execute-api.us-west-1.amazonaws.com/graphql/`,
+//     websocketUrl: `wss://phqj0olq59.execute-api.us-west-1.amazonaws.com/graphql`,
+//     apiKey: 'BH7U5toxb4qPcdDa1yNd2ab1riZ9xkfP3cGtU5VAz79c', // <---- API key
+// });
+//
+// const { entities } = client;
 
-// DMV Node apiUrl/websocketUrl/apiKey
-const client = createVendiaClient({
-    apiUrl: `https://rhpsthbngc.execute-api.us-west-1.amazonaws.com/graphql/`,
-    websocketUrl: `wss://phqj0olq59.execute-api.us-west-1.amazonaws.com/graphql`,
-    apiKey: 'BH7U5toxb4qPcdDa1yNd2ab1riZ9xkfP3cGtU5VAz79c', // <---- API key
-});
-
-const { entities } = client;
-
-export default function EntryBar() {
-
+export default function EntryBar(entities) {
     // add a new citizen
     const add = async (prop) => {
+        let ret = "Entrybar"
+        ret += JSON.stringify(entities)
+        // alert(ret)
         const addResponse = await entities.citizen.add({
             firstName: "hank",
             lastName: "hill",

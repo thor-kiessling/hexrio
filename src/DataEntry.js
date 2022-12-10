@@ -5,11 +5,12 @@ import EntryBar from './EntryBar.js';
 import AppBodyPlus from './AppBodyPlus.js'
 import AppFooter from './AppFooter.js'
 
-function DataEntry() {
-
+function DataEntry(entities) {
+    let ret = "DataEntry"
+    ret += JSON.stringify(entities)
+    // alert(ret)
+    // alert (JSON.stringify(entities.citizen.list))
     return (
-
-
         <div className="DataEntry">
 
             <div className="DataEntry-navigation">
@@ -22,7 +23,8 @@ function DataEntry() {
             </header>
 
             <div className="DataEntry-body">
-                <EntryBar />
+
+                <EntryBar {...entities}/>
             </div>
 
             <div className="DataEntry-body-plus">
