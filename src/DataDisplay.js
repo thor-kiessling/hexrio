@@ -185,7 +185,7 @@ const DataDisplay = () => {
         </div>
         <div>
           
-          <Stack direction="rows" spacing={1} justifyContent="flex-end">
+          <Stack direction="rows" spacing={1} justifyContent="center" alignItems="center">
           <div style={{ height: 700, width: '80%', background: 'white' }}>
           <Typography
             variant='h1'
@@ -195,7 +195,9 @@ const DataDisplay = () => {
             >
               Department of Motor Vehicles
             </Typography>
-            <DataGrid 
+            <DataGrid
+                justifyContent="center"
+                alignItems="center"
               hideFooterPagination
               hideFooterSelectedRowCount
               rows={tableDataDMV.items}
@@ -216,7 +218,9 @@ const DataDisplay = () => {
         >
           Social Security Administration
         </Typography>
-            <DataGrid   
+            <DataGrid
+                justifyContent="center"
+                alignItems="center"
               hideFooterPagination
               hideFooterSelectedRowCount           
               rows={tableDataSS.items}
@@ -237,7 +241,9 @@ const DataDisplay = () => {
         >
           Department of State
         </Typography>
-            <DataGrid     
+            <DataGrid
+                justifyContent="center"
+                alignItems="center"
               hideFooterPagination
               hideFooterSelectedRowCount         
               rows={tableDataDOS.items}
@@ -256,7 +262,7 @@ const DataDisplay = () => {
         
 
     );
-     } else {
+     } else {  //display a loading screen while waiting for calls to finish.
          return(
              <box alignItems="center" justifyContent='center'
                     style={{width: '100vw', height: '100vh', color: 'white', display: 'flex', justifyContent: 'center',
@@ -272,22 +278,22 @@ const DataDisplay = () => {
 
 
 const columnsDMV = [
-  { field: 'firstName', headerName: 'First Name', headerAlign: 'center', align: 'center' },
-  { field: 'lastName', headerName: 'Last Name', headerAlign: 'center', align: 'center' },
+  { field: 'firstName', headerName: 'First', headerAlign: 'center', align: 'center' },
+  { field: 'lastName', headerName: 'Last', headerAlign: 'center', align: 'center' },
   { field: 'dl', headerName: 'DL Number', type: 'string', headerAlign: 'center', align: 'center' },
   //{ field: 'photo', headerName: 'Photo'},
   { field: 'dob', headerName: 'Date of Birth', headerAlign: 'center', align: 'center' },
 ]
 
 const columnsSS = [
-  { field: 'firstName', headerName: 'First Name', headerAlign: 'center', align: 'center'},
-  { field: 'lastName', headerName: 'Last Name', headerAlign: 'center', align: 'center' },
+  { field: 'firstName', headerName: 'First', headerAlign: 'center', align: 'center'},
+  { field: 'lastName', headerName: 'Last', headerAlign: 'center', align: 'center' },
   { field: 'dob', headerName: 'Date of Birth', headerAlign: 'center', align: 'center' },
 ]
 
 const columnsDOS = [
-  { field: 'firstName', headerName: 'First Name', headerAlign: 'center', align: 'center' },
-  { field: 'lastName', headerName: 'Last Name', headerAlign: 'center', align: 'center' },
+  { field: 'firstName', headerName: 'First', headerAlign: 'center', align: 'center' },
+  { field: 'lastName', headerName: 'Last', headerAlign: 'center', align: 'center' },
   //{ field: 'photo', headerName: 'Photo'},
   { field: 'dob', headerName: 'Date of Birth', headerAlign: 'center', align: 'center' },
   { field: 'passportNum', headerName: 'Passport', type: 'string', headerAlign: 'center', align: 'center' },
