@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Match from './Match.js'
 import Invalid from './Invalid.js'
 import {CircularProgress} from "@mui/material";
+import Box from "@mui/material/Box";
 
 
 const DataDisplay = (clients) => {
@@ -107,16 +108,19 @@ const DataDisplay = (clients) => {
                 tableDataDMV.items[0].lastName === tableDataDOS.items[0].lastName &&
                 tableDataDMV.items[0].passportExp === tableDataDOS.items[0].passportExp &&
                 tableDataDMV.items[0].passportNum === tableDataDOS.items[0].passportNum &&
+                tableDataDMV.items[0].photoURL === tableDataDOS.items[0].photoURL &&
                 tableDataDMV.items[0].dob === tableDataSS.items[0].dob && //DMV to SS comparison
                 tableDataDMV.items[0].firstName === tableDataSS.items[0].firstName &&
                 tableDataDMV.items[0].lastName === tableDataSS.items[0].lastName &&
                 tableDataDMV.items[0].passportExp === tableDataSS.items[0].passportExp &&
                 tableDataDMV.items[0].passportNum === tableDataSS.items[0].passportNum &&
+                tableDataDMV.items[0].passportNum === tableDataSS.items[0].passportNum &&
                 tableDataDOS.items[0].dob === tableDataSS.items[0].dob && //DOS to SS comparison
                 tableDataDOS.items[0].firstName === tableDataSS.items[0].firstName &&
                 tableDataDOS.items[0].lastName === tableDataSS.items[0].lastName &&
                 tableDataDOS.items[0].passportExp === tableDataSS.items[0].passportExp &&
-                tableDataDOS.items[0].passportNum === tableDataSS.items[0].passportNum) {
+                tableDataDOS.items[0].passportNum === tableDataSS.items[0].passportNum &&
+                tableDataDOS.items[0].photoURL === tableDataSS.items[0].photoURL) {
                 return (
                     <Match/>
                 );
@@ -172,7 +176,8 @@ const DataDisplay = (clients) => {
                 <div>
 
                     <Stack direction="rows" spacing={1} justifyContent="center" alignItems="center">
-                        <div style={{height: 700, width: '80%', background: 'white'}}>
+                        <Stack direction="column" justifyContent="center" alignItems="center"
+                               style={{height: 700, width: '100%', background: 'white'}}>
                             <Typography
                                 variant='h1'
                                 style={{
@@ -186,6 +191,7 @@ const DataDisplay = (clients) => {
                             >
                                 Department of Motor Vehicles
                             </Typography>
+                            <img src={tableDataDMV.items[0].photoURL} style={{width: 'max-content',height: '150px'}}/>
                             <DataGrid
                                 justifyContent="center"
                                 alignItems="center"
@@ -194,13 +200,14 @@ const DataDisplay = (clients) => {
                                 rows={tableDataDMV.items}
                                 columns={columnsDMV}
                                 getRowId={(row) => row._id}
-                                style={{background: 'white', fontFamily: 'Merriweather', fontSize: 13}}
+                                style={{background: 'white', fontFamily: 'Merriweather', fontSize: 13, width: '90%'}}
                                 align='center'
                                 sx={{paddingLeft: 1, borderColor: 'white'}}
                             />
 
-                        </div>
-                        <div style={{height: 700, width: '100%', background: 'white'}}>
+                        </Stack>
+                        <Stack justifyContent="center" alignItems="center"
+                            direction="column" style={{height: 700, width: '100%', background: 'white'}}>
                             <Typography
                                 variant='h1'
                                 style={{
@@ -215,6 +222,7 @@ const DataDisplay = (clients) => {
                             >
                                 Social Security Administration
                             </Typography>
+                            <img src={tableDataSS.items[0].photoURL} style={{width: 'max-content',height: '150px'}}/>
                             <DataGrid
                                 justifyContent="center"
                                 alignItems="center"
@@ -228,8 +236,9 @@ const DataDisplay = (clients) => {
                                 sx={{paddingLeft: 1, borderColor: 'white'}}
                             />
 
-                        </div>
-                        <div style={{height: 700, width: '100%', background: 'white'}}>
+                        </Stack>
+                        <Stack justifyContent="center" alignItems="center"
+                            direction="column" style={{height: 700, width: '100%', background: 'white'}}>
                             <Typography
                                 variant='h1'
                                 style={{
@@ -243,6 +252,7 @@ const DataDisplay = (clients) => {
                             >
                                 Department of State
                             </Typography>
+                            <img src={tableDataDOS.items[0].photoURL} style={{width: 'max-content',height: '150px'}}/>
                             <DataGrid
                                 justifyContent="center"
                                 alignItems="center"
@@ -251,11 +261,11 @@ const DataDisplay = (clients) => {
                                 rows={tableDataDOS.items}
                                 columns={columnsDOS}
                                 getRowId={(row) => row._id}
-                                style={{background: 'white', fontFamily: 'Merriweather', fontSize: 13}}
+                                style={{background: 'white', fontFamily: 'Merriweather', fontSize: 13, width: '90%'}}
                                 sx={{borderColor: 'white', paddingLeft: 2}}
                             />
 
-                        </div>
+                        </Stack>
                     </Stack>
 
                 </div>
@@ -265,7 +275,7 @@ const DataDisplay = (clients) => {
         );
     } else {  //display a loading screen while waiting for calls to finish.
         return (
-            <box alignItems="center" justifyContent='center'
+            <Box alignItems="center" justifyContent='center'
                  style={{
                      width: '100vw', height: '100vh', color: 'white', display: 'flex', justifyContent: 'center',
                      alignItems: 'center'
@@ -273,7 +283,7 @@ const DataDisplay = (clients) => {
 
                 <CircularProgress style={{width: '100px', height: '100px', display: 'flex'}}/>
 
-            </box>
+            </Box>
         )
     }
 };

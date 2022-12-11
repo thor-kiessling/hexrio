@@ -11,6 +11,10 @@
       "items": {
         "type": "object",
         "properties": {
+          "photoURL": {
+            "description": "Web Address of citizen's photo",
+            "type": "string"
+          },
           "firstName": {
             "description": "Citizen's first name",
             "type": "string"
