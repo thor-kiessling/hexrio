@@ -1,10 +1,9 @@
 import './App.css';
 import React from 'react';
 import Nav2 from './Nav2.js';
-import { useLocation } from "react-router-dom";
-import { createVendiaClient } from '@vendia/client';
-import { DataGrid } from '@mui/x-data-grid'
-import { useState, useEffect } from 'react';
+import {useLocation} from "react-router-dom";
+import {DataGrid} from '@mui/x-data-grid'
+import {useState, useEffect} from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Match from './Match.js'
@@ -12,21 +11,7 @@ import Invalid from './Invalid.js'
 import {CircularProgress} from "@mui/material";
 
 
-
-// DMV Node apiUrl/websocketUrl/apiKey
-const client = createVendiaClient({
-    apiUrl: `https://rhpsthbngc.execute-api.us-west-1.amazonaws.com/graphql/`,
-    websocketUrl: `wss://phqj0olq59.execute-api.us-west-1.amazonaws.com/graphql`,
-    apiKey: 'BH7U5toxb4qPcdDa1yNd2ab1riZ9xkfP3cGtU5VAz79c', // <---- API key
-});
-
-// Create 2 more clients for SS and DOS or whatever they're called
-
-const { entities } = client;
-
-
-
-const DataDisplay = () => {
+const DataDisplay = (clients) => {
 
     // Store data from SearchBar
     const location = useLocation();
@@ -36,113 +21,111 @@ const DataDisplay = () => {
     // DMV Call
     // Returns citizen from DMV
     const responseAsyncDMV = async () => {
-      return await entities.citizen.list(
-          {
-              filter: {
-                  socialSecurityNum:  {
-                      eq: parseInt(ssn, 10),
-                  },
-                  _owner:  {
-                    eq: 'DMV',
+        return await clients.clients.clients.DMVclient.entities.citizen.list(
+            {
+                filter: {
+                    socialSecurityNum: {
+                        eq: parseInt(ssn, 10),
+                    },
+                    _owner: {
+                        eq: 'DMV',
+                    },
+
                 },
 
-              },
-              
-          }            
-      )
-  } 
+            }
+        )
+    }
 
-  const [tableDataDMV, setTableDataDMV] = useState([])
+    const [tableDataDMV, setTableDataDMV] = useState([])
 
-  useEffect(() => {
-    responseAsyncDMV().then(data=>
-       setTableDataDMV(data)
-    );
+    useEffect(() => {
+        responseAsyncDMV().then(data =>
+            setTableDataDMV(data)
+        );
     }, []);
 
     // SS Call
     // Returns citizen from SS
     const responseAsyncSS = async () => {
-      return await entities.citizen.list(
-          {
-              filter: {
-                  socialSecurityNum:  {
-                      eq: parseInt(ssn, 10),
-                  },
-                  _owner:  {
-                    eq: 'SS',
+        return await clients.clients.clients.SSclient.entities.citizen.list(
+            {
+                filter: {
+                    socialSecurityNum: {
+                        eq: parseInt(ssn, 10),
+                    },
+                    _owner: {
+                        eq: 'SS',
+                    },
+
                 },
 
-              },
-              
-          }            
-      )
-  } 
+            }
+        )
+    }
 
-  const [tableDataSS, setTableDataSS] = useState([])
+    const [tableDataSS, setTableDataSS] = useState([])
 
-  useEffect(() => {
-    responseAsyncSS().then(data=>
-       setTableDataSS(data)
-    );
+    useEffect(() => {
+        responseAsyncSS().then(data =>
+            setTableDataSS(data)
+        );
     }, []);
 
     // DOS Call
     // Returns citizen from DOS
     const responseAsyncDOS = async () => {
-      return await entities.citizen.list(
-          {
-              filter: {
-                  socialSecurityNum:  {
-                      eq: parseInt(ssn, 10),
-                  },
-                  _owner:  {
-                    eq: 'DOS',
+        return await clients.clients.clients.DOSclient.entities.citizen.list(
+            {
+                filter: {
+                    socialSecurityNum: {
+                        eq: parseInt(ssn, 10),
+                    },
+                    _owner: {
+                        eq: 'DOS',
+                    },
+
                 },
 
-              },
-              
-          }            
-      )
-  } 
+            }
+        )
+    }
 
-  const [tableDataDOS, setTableDataDOS] = useState([])
+    const [tableDataDOS, setTableDataDOS] = useState([])
 
-  useEffect(() => {
-    responseAsyncDOS().then(data=>
-       setTableDataDOS(data)
-    );
+    useEffect(() => {
+        responseAsyncDOS().then(data =>
+            setTableDataDOS(data)
+        );
     }, []);
 
 
-    const CheckResults=()=>{
-        try{
-      if (tableDataDMV.items[0].dob === tableDataDOS.items[0].dob && //DMV to DOS comparison
-          tableDataDMV.items[0].firstName === tableDataDOS.items[0].firstName &&
-          tableDataDMV.items[0].lastName === tableDataDOS.items[0].lastName &&
-          tableDataDMV.items[0].passportExp === tableDataDOS.items[0].passportExp &&
-          tableDataDMV.items[0].passportNum === tableDataDOS.items[0].passportNum &&
-          tableDataDMV.items[0].dob === tableDataSS.items[0].dob && //DMV to SS comparison
-          tableDataDMV.items[0].firstName === tableDataSS.items[0].firstName &&
-          tableDataDMV.items[0].lastName === tableDataSS.items[0].lastName &&
-          tableDataDMV.items[0].passportExp === tableDataSS.items[0].passportExp &&
-          tableDataDMV.items[0].passportNum === tableDataSS.items[0].passportNum &&
-          tableDataDOS.items[0].dob === tableDataSS.items[0].dob && //DOS to SS comparison
-          tableDataDOS.items[0].firstName === tableDataSS.items[0].firstName &&
-          tableDataDOS.items[0].lastName === tableDataSS.items[0].lastName &&
-          tableDataDOS.items[0].passportExp === tableDataSS.items[0].passportExp &&
-          tableDataDOS.items[0].passportNum === tableDataSS.items[0].passportNum)
-          {
-            return (
-                <Match/>
-            );
-          }
-          else {
-            return (
-              <Invalid/>
-            )
-          }}
-        catch(TypeError){
+    const CheckResults = () => {
+        try {
+            if (tableDataDMV.items[0].dob === tableDataDOS.items[0].dob && //DMV to DOS comparison
+                tableDataDMV.items[0].firstName === tableDataDOS.items[0].firstName &&
+                tableDataDMV.items[0].lastName === tableDataDOS.items[0].lastName &&
+                tableDataDMV.items[0].passportExp === tableDataDOS.items[0].passportExp &&
+                tableDataDMV.items[0].passportNum === tableDataDOS.items[0].passportNum &&
+                tableDataDMV.items[0].dob === tableDataSS.items[0].dob && //DMV to SS comparison
+                tableDataDMV.items[0].firstName === tableDataSS.items[0].firstName &&
+                tableDataDMV.items[0].lastName === tableDataSS.items[0].lastName &&
+                tableDataDMV.items[0].passportExp === tableDataSS.items[0].passportExp &&
+                tableDataDMV.items[0].passportNum === tableDataSS.items[0].passportNum &&
+                tableDataDOS.items[0].dob === tableDataSS.items[0].dob && //DOS to SS comparison
+                tableDataDOS.items[0].firstName === tableDataSS.items[0].firstName &&
+                tableDataDOS.items[0].lastName === tableDataSS.items[0].lastName &&
+                tableDataDOS.items[0].passportExp === tableDataSS.items[0].passportExp &&
+                tableDataDOS.items[0].passportNum === tableDataSS.items[0].passportNum) {
+                return (
+                    <Match/>
+                );
+            } else {
+                return (
+                    <Invalid/>
+                )
+            }
+        } catch (TypeError) {
             return <Invalid/>
         }
     }
@@ -152,152 +135,171 @@ const DataDisplay = () => {
     console.log(tableDataDOS.items);
 
 
-     if (tableDataDMV.items !== undefined && tableDataSS.items !== undefined && tableDataDOS.items !== undefined) {
-    return (
- 
-        <div>
+    if (tableDataDMV.items !== undefined && tableDataSS.items !== undefined && tableDataDOS.items !== undefined) {
+        return (
 
-        <div className="App-navigation">
-            <a href="./"><img src="https://www.uscis.gov/sites/default/files/images/site/DHS_cis_W.svg" alt="DHS Logo" width="300"></img></a>
-            <Nav2 />
-        </div>
+            <div>
 
-        <header className="App-datadisplayheader">
-                    <img src="https://www.uscis.gov/sites/default/files/images/article-history/SealsSignatures_USCIS%402x.png" alt="DHS Logo" width="350" ></img>
+                <div className="App-navigation">
+                    <a href="./"><img src="https://www.uscis.gov/sites/default/files/images/site/DHS_cis_W.svg"
+                                      alt="DHS Logo" width="300"/></a>
+                    <Nav2/>
+                </div>
+
+                <header className="App-datadisplayheader">
+                    <img
+                        src="https://www.uscis.gov/sites/default/files/images/article-history/SealsSignatures_USCIS%402x.png"
+                        alt="DHS Logo" width="350"/>
                     <Stack direction="column" spacing={3} justifyContent="flex-end">
-                    <Typography
-                          variant='h1'
-                          style={{fontSize: 40, fontFamily: 'Merriweather', background: 'white', color: 'black' }}
-                          align='center'
-                          sx={{ fontWeight: 'bold', paddingTop: 3, paddingBottom: 3 }}
-                          >
+                        <Typography
+                            variant='h1'
+                            style={{fontSize: 40, fontFamily: 'Merriweather', background: 'white', color: 'black'}}
+                            align='center'
+                            sx={{fontWeight: 'bold', paddingTop: 3, paddingBottom: 3}}
+                        >
                             Entrant's SSN: {ssn}
+                        </Typography>
+                    </Stack>
+                </header>
+                <div>
+                    {/*<Match />*/}
+                    <CheckResults/>
+                </div>
+
+                <div className="datadisplay">
+
+                </div>
+                <div>
+
+                    <Stack direction="rows" spacing={1} justifyContent="center" alignItems="center">
+                        <div style={{height: 700, width: '80%', background: 'white'}}>
+                            <Typography
+                                variant='h1'
+                                style={{
+                                    fontSize: 27,
+                                    fontFamily: 'Merriweather',
+                                    background: 'white',
+                                    color: '#004073'
+                                }}
+                                align='center'
+                                sx={{fontWeight: 'bold', paddingBottom: 5}}
+                            >
+                                Department of Motor Vehicles
                             </Typography>
-                            </Stack>
-        </header>
-        <div>
-          {/*<Match />*/}
-          <CheckResults />
-        </div>
-  
-        <div className="datadisplay">         
+                            <DataGrid
+                                justifyContent="center"
+                                alignItems="center"
+                                hideFooterPagination
+                                hideFooterSelectedRowCount
+                                rows={tableDataDMV.items}
+                                columns={columnsDMV}
+                                getRowId={(row) => row._id}
+                                style={{background: 'white', fontFamily: 'Merriweather', fontSize: 13}}
+                                align='center'
+                                sx={{paddingLeft: 1, borderColor: 'white'}}
+                            />
 
-        </div>
-        <div>
-          
-          <Stack direction="rows" spacing={1} justifyContent="center" alignItems="center">
-          <div style={{ height: 700, width: '80%', background: 'white' }}>
-          <Typography
-            variant='h1'
-            style={{fontSize: 27, fontFamily: 'Merriweather', background: 'white', color: '#004073' }}
-            align='center'
-            sx={{ fontWeight: 'bold', paddingBottom: 5 }}
-            >
-              Department of Motor Vehicles
-            </Typography>
-            <DataGrid
-                justifyContent="center"
-                alignItems="center"
-              hideFooterPagination
-              hideFooterSelectedRowCount
-              rows={tableDataDMV.items}
-              columns={columnsDMV}
-              getRowId={(row) => row._id}
-              style={{ background: 'white', fontFamily: 'Merriweather', fontSize: 13 }}
-              align= 'center'
-              sx={{ paddingLeft: 1, borderColor: 'white' }}
-            />
-            
-          </div>
-          <div style={{ height: 700, width: '100%', background: 'white' }}>
-          <Typography
-        variant='h1'
-        style={{fontSize: 27, fontFamily: 'Merriweather', background: 'white', color: '#004073', width: '100%' }}
-        align='center'
-        sx={{ fontWeight: 'bold', paddingBottom: 5, paddingLeft: 6 }}
-        >
-          Social Security Administration
-        </Typography>
-            <DataGrid
-                justifyContent="center"
-                alignItems="center"
-              hideFooterPagination
-              hideFooterSelectedRowCount           
-              rows={tableDataSS.items}
-              columns={columnsSS}
-              getRowId={(row) => row._id}
-              style={{ background: 'white', fontFamily: 'Merriweather', fontSize: 13, width: '90%' }}
-              align='center'
-              sx={{ paddingLeft: 1, borderColor: 'white'}}
-            />
-            
-          </div>
-          <div style={{ height: 700, width: '100%', background: 'white' }}>
-          <Typography
-        variant='h1'
-        style={{fontSize: 27, fontFamily: 'Merriweather', background: 'white', color: '#004073' }}
-        align='center'
-        sx={{ fontWeight: 'bold', paddingBottom: 5 }}
-        >
-          Department of State
-        </Typography>
-            <DataGrid
-                justifyContent="center"
-                alignItems="center"
-              hideFooterPagination
-              hideFooterSelectedRowCount         
-              rows={tableDataDOS.items}
-              columns={columnsDOS}
-              getRowId={(row) => row._id}
-              style={{ background: 'white', fontFamily: 'Merriweather', fontSize: 13 }}
-              sx={{ borderColor: 'white', paddingLeft: 2 }}
-            />
-            
-          </div>
-          </Stack>
-            
-        </div>
-        </div>
+                        </div>
+                        <div style={{height: 700, width: '100%', background: 'white'}}>
+                            <Typography
+                                variant='h1'
+                                style={{
+                                    fontSize: 27,
+                                    fontFamily: 'Merriweather',
+                                    background: 'white',
+                                    color: '#004073',
+                                    width: '100%'
+                                }}
+                                align='center'
+                                sx={{fontWeight: 'bold', paddingBottom: 5, paddingLeft: 6}}
+                            >
+                                Social Security Administration
+                            </Typography>
+                            <DataGrid
+                                justifyContent="center"
+                                alignItems="center"
+                                hideFooterPagination
+                                hideFooterSelectedRowCount
+                                rows={tableDataSS.items}
+                                columns={columnsSS}
+                                getRowId={(row) => row._id}
+                                style={{background: 'white', fontFamily: 'Merriweather', fontSize: 13, width: '90%'}}
+                                align='center'
+                                sx={{paddingLeft: 1, borderColor: 'white'}}
+                            />
 
-        
+                        </div>
+                        <div style={{height: 700, width: '100%', background: 'white'}}>
+                            <Typography
+                                variant='h1'
+                                style={{
+                                    fontSize: 27,
+                                    fontFamily: 'Merriweather',
+                                    background: 'white',
+                                    color: '#004073'
+                                }}
+                                align='center'
+                                sx={{fontWeight: 'bold', paddingBottom: 5}}
+                            >
+                                Department of State
+                            </Typography>
+                            <DataGrid
+                                justifyContent="center"
+                                alignItems="center"
+                                hideFooterPagination
+                                hideFooterSelectedRowCount
+                                rows={tableDataDOS.items}
+                                columns={columnsDOS}
+                                getRowId={(row) => row._id}
+                                style={{background: 'white', fontFamily: 'Merriweather', fontSize: 13}}
+                                sx={{borderColor: 'white', paddingLeft: 2}}
+                            />
 
-    );
-     } else {  //display a loading screen while waiting for calls to finish.
-         return(
-             <box alignItems="center" justifyContent='center'
-                    style={{width: '100vw', height: '100vh', color: 'white', display: 'flex', justifyContent: 'center',
-                        alignItems: 'center'} }>
+                        </div>
+                    </Stack>
 
-                 <CircularProgress style={{width: '100px', height: '100px', display: 'flex'}}/>
+                </div>
+            </div>
 
-             </box>
-         )
-     }
+
+        );
+    } else {  //display a loading screen while waiting for calls to finish.
+        return (
+            <box alignItems="center" justifyContent='center'
+                 style={{
+                     width: '100vw', height: '100vh', color: 'white', display: 'flex', justifyContent: 'center',
+                     alignItems: 'center'
+                 }}>
+
+                <CircularProgress style={{width: '100px', height: '100px', display: 'flex'}}/>
+
+            </box>
+        )
+    }
 };
 
 
-
 const columnsDMV = [
-  { field: 'firstName', headerName: 'First', headerAlign: 'center', align: 'center' },
-  { field: 'lastName', headerName: 'Last', headerAlign: 'center', align: 'center' },
-  { field: 'dl', headerName: 'DL Number', type: 'string', headerAlign: 'center', align: 'center' },
-  //{ field: 'photo', headerName: 'Photo'},
-  { field: 'dob', headerName: 'Date of Birth', headerAlign: 'center', align: 'center' },
+    {field: 'firstName', headerName: 'First', headerAlign: 'center', align: 'center'},
+    {field: 'lastName', headerName: 'Last', headerAlign: 'center', align: 'center'},
+    {field: 'dl', headerName: 'DL Number', type: 'string', headerAlign: 'center', align: 'center'},
+    //{ field: 'photo', headerName: 'Photo'},
+    {field: 'dob', headerName: 'Date of Birth', headerAlign: 'center', align: 'center'},
 ]
 
 const columnsSS = [
-  { field: 'firstName', headerName: 'First', headerAlign: 'center', align: 'center'},
-  { field: 'lastName', headerName: 'Last', headerAlign: 'center', align: 'center' },
-  { field: 'dob', headerName: 'Date of Birth', headerAlign: 'center', align: 'center' },
+    {field: 'firstName', headerName: 'First', headerAlign: 'center', align: 'center'},
+    {field: 'lastName', headerName: 'Last', headerAlign: 'center', align: 'center'},
+    {field: 'dob', headerName: 'Date of Birth', headerAlign: 'center', align: 'center'},
 ]
 
 const columnsDOS = [
-  { field: 'firstName', headerName: 'First', headerAlign: 'center', align: 'center' },
-  { field: 'lastName', headerName: 'Last', headerAlign: 'center', align: 'center' },
-  //{ field: 'photo', headerName: 'Photo'},
-  { field: 'dob', headerName: 'Date of Birth', headerAlign: 'center', align: 'center' },
-  { field: 'passportNum', headerName: 'Passport', type: 'string', headerAlign: 'center', align: 'center' },
-  { field: 'passportExp', headerName: 'Expiration', type: 'string', headerAlign: 'center', align: 'center' },
+    {field: 'firstName', headerName: 'First', headerAlign: 'center', align: 'center'},
+    {field: 'lastName', headerName: 'Last', headerAlign: 'center', align: 'center'},
+    //{ field: 'photo', headerName: 'Photo'},
+    {field: 'dob', headerName: 'Date of Birth', headerAlign: 'center', align: 'center'},
+    {field: 'passportNum', headerName: 'Passport', type: 'string', headerAlign: 'center', align: 'center'},
+    {field: 'passportExp', headerName: 'Expiration', type: 'string', headerAlign: 'center', align: 'center'},
 ]
 
 export default DataDisplay;

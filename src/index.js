@@ -45,7 +45,7 @@ root.render(
                 <Route path="/Help" element={<Help/>}/>
                 <Route path="/About" element={<About/>}/>
                 <Route path="/DataEntry" element={<DataEntry clients={{clients}}/>}/>
-                <Route path='/DataDisplay' element={<DataDisplay/>}/>
+                <Route path='/DataDisplay' element={<DataDisplay clients={{clients}}/>}/>
 
 
             </Routes>
