@@ -11,33 +11,46 @@ import DataDisplay from "./DataDisplay"
 import {createVendiaClient} from "@vendia/client";
 
 // DMV Node apiUrl/websocketUrl/apiKey
-const client = createVendiaClient({
+const DMVclient = createVendiaClient({
     apiUrl: `https://rhpsthbngc.execute-api.us-west-1.amazonaws.com/graphql/`,
     websocketUrl: `wss://phqj0olq59.execute-api.us-west-1.amazonaws.com/graphql`,
     apiKey: 'BH7U5toxb4qPcdDa1yNd2ab1riZ9xkfP3cGtU5VAz79c', // <---- API key
+    localNodeName: 'DMV',
 });
-const {entities} = client
-let ret = "Index"
-ret += JSON.stringify(entities)
-// alert(ret)
+// DOS Node apiUrl/websocketUrl/apiKey
+const DOSclient = createVendiaClient({
+    apiUrl: `https://jixdzstoj4.execute-api.us-west-1.amazonaws.com/graphql/`,
+    websocketUrl: `wss://dl9p0kj4na.execute-api.us-west-1.amazonaws.com/graphql`,
+    apiKey: '7DrwoY2UQDxWVx2CSr79StJh2zB6Y6PcqtAgxox2fjSk', // <---- API key
+    localNodeName: 'DOS'
+});
+// SS Node apiUrl/websocketUrl/apiKey
+const SSclient = createVendiaClient({
+    apiUrl: `https://rhpsthbngc.execute-api.us-west-1.amazonaws.com/graphql/`,
+    websocketUrl: `wss://phqj0olq59.execute-api.us-west-1.amazonaws.com/graphql`,
+    apiKey: '7xoZqZUx9MNY5Ycaebw8mobyur9iHDRp2VApPceNDgh', // <---- API key
+    localNodeName: 'SS'
+});
+const clients = {DMVclient, DOSclient, SSclient}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+    <React.StrictMode>
 
-      <Router>
+        <Router>
 
-          <Routes>
+            <Routes>
 
-              <Route path="/" element={<App/>} />
-              <Route path="/Help" element={<Help/>} />
-              <Route path="/About" element={<About/>} />
-              <Route path="/DataEntry" element={<DataEntry entities={{entities}} />} />
-              <Route path='/DataDisplay' element={<DataDisplay/>} />
+                <Route path="/" element={<App/>}/>
+                <Route path="/Help" element={<Help/>}/>
+                <Route path="/About" element={<About/>}/>
+                <Route path="/DataEntry" element={<DataEntry clients={{clients}}/>}/>
+                <Route path='/DataDisplay' element={<DataDisplay/>}/>
 
 
-          </Routes>
-      </Router>
-  </React.StrictMode>
+            </Routes>
+        </Router>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

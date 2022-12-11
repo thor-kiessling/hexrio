@@ -5,38 +5,34 @@ import EntryBar from './EntryBar.js';
 import AppBodyPlus from './AppBodyPlus.js'
 import AppFooter from './AppFooter.js'
 
-function DataEntry(entities) {
-    let ret = "DataEntry"
-    ret += JSON.stringify(entities)
-    // alert(ret)
-    // alert (JSON.stringify(entities.citizen.list))
-    return (
-        <div className="DataEntry">
+function DataEntry(clients) {
+    return (<div className="DataEntry">
 
             <div className="DataEntry-navigation">
-                <a href="./"><img src="https://www.uscis.gov/sites/default/files/images/site/DHS_cis_W.svg" alt="DHS Logo" width="300"></img></a>
-                <Nav2 />
+                <a href="./"><img src="https://www.uscis.gov/sites/default/files/images/site/DHS_cis_W.svg"
+                                  alt="DHS Logo" width="300"/></a>
+                <Nav2/>
             </div>
 
             <header className="DataEntry-header">
-                <img src="https://www.uscis.gov/sites/default/files/images/article-history/SealsSignatures_USCIS%402x.png" alt="DHS Logo" width="350"></img>
+                <img
+                    src="https://www.uscis.gov/sites/default/files/images/article-history/SealsSignatures_USCIS%402x.png"
+                    alt="DHS Logo" width="350"/>
             </header>
 
             <div className="DataEntry-body">
-
-                <EntryBar {...entities}/>
+                <EntryBar {...clients}/>
             </div>
 
             <div className="DataEntry-body-plus">
-                <AppBodyPlus />
+                <AppBodyPlus/>
             </div>
 
             <footer className="DataEntry-footer">
-                <AppFooter />
+                <AppFooter/>
             </footer>
 
         </div>
-
 
 
     );

@@ -8,24 +8,11 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import SearchIcon from '@mui/icons-material/Search';
-// import { createVendiaClient } from '@vendia/client';
-//
-// // DMV Node apiUrl/websocketUrl/apiKey
-// const client = createVendiaClient({
-//     apiUrl: `https://rhpsthbngc.execute-api.us-west-1.amazonaws.com/graphql/`,
-//     websocketUrl: `wss://phqj0olq59.execute-api.us-west-1.amazonaws.com/graphql`,
-//     apiKey: 'BH7U5toxb4qPcdDa1yNd2ab1riZ9xkfP3cGtU5VAz79c', // <---- API key
-// });
-//
-// const { entities } = client;
 
-export default function EntryBar(entities) {
+export default function EntryBar(clients) {
     // add a new citizen
     const add = async (prop) => {
-        let ret = "Entrybar"
-        ret += JSON.stringify(entities)
-        // alert(ret)
-        const addResponse = await entities.citizen.add({
+        const addResponse = await clients.clients.clients.DMVclient.entities.citizen.add({
             firstName: "hank",
             lastName: "hill",
             dl: 1234567,
@@ -37,25 +24,30 @@ export default function EntryBar(entities) {
         console.log(addResponse);
         alert(JSON.stringify(addResponse['result']));
     }
+    // const settings = async () => {
+    //     clients.clients.clients.DMVclient.uniInfo.update({localNodeName: "DMV"})
+    //     const settingsResponse = await clients.clients.clients.DMVclient.uniInfo.get();
+    //     console.log(settingsResponse);
+    //     alert(JSON.stringify(settingsResponse['result']));
+    // }
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        // settings()
         add(values.password);
     }
 
     const [values, setValues] = React.useState({
-        password: '',
-        showPassword: false,
+        password: '', showPassword: false,
     });
 
     const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
+        setValues({...values, [prop]: event.target.value});
     };
 
     const handleClickShowPassword = () => {
         setValues({
-            ...values,
-            showPassword: !values.showPassword,
+            ...values, showPassword: !values.showPassword,
         });
     };
 
@@ -63,50 +55,46 @@ export default function EntryBar(entities) {
         event.preventDefault();
     };
 
-    return (
-        <Box
+    return (<Box
             component="form"
-            sx={{'& .MuiTextField-root': { m: 5, width: '60ch'}, }}
+            sx={{'& .MuiTextField-root': {m: 5, width: '60ch'},}}
             noValidate
             autoComplete="off"
         >
 
-            <FormControl sx={{ m: 5, width: '60ch' }} variant="outlined">
+            <FormControl sx={{m: 5, width: '60ch'}} variant="outlined">
                 <InputLabel htmlFor="outlined-adornment-password"
                             style={{fontSize: 30, fontFamily: 'Merriweather'}}>
                     Enter SSN...</InputLabel>
                 <OutlinedInput
                     id="standard-adornment-password"
-                    style={{ background: 'white', fontSize: 40, fontFamily: 'Merriweather'}}
+                    style={{background: 'white', fontSize: 40, fontFamily: 'Merriweather'}}
                     type={values.showPassword ? 'text' : 'password'}
                     value={values.password}
                     onChange={handleChange('password')}
-                    endAdornment={
-                        <InputAdornment position="end">
-                            <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                                sx={{p: 4}}
-                            >
-                                {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                            </IconButton>
+                    endAdornment={<InputAdornment position="end">
+                        <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                            sx={{p: 4}}
+                        >
+                            {values.showPassword ? <VisibilityOff/> : <Visibility/>}
+                        </IconButton>
 
-                            <IconButton
-                                size='large'
-                                onClick={handleSubmit}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end">
-                                <SearchIcon/>
-                            </IconButton>
+                        <IconButton
+                            size='large'
+                            onClick={handleSubmit}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end">
+                            <SearchIcon/>
+                        </IconButton>
 
-                        </InputAdornment>
-                    }
+                    </InputAdornment>}
                     label="Password"
                 />
             </FormControl>
-        </Box>
-    );
+        </Box>);
 
 }
